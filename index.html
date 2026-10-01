@@ -62,6 +62,14 @@
   pre .c{color:var(--accent-ink);font-weight:700}
   code{font-family:var(--mono);font-size:.9em;background:var(--surface-2);
     border:1px solid var(--border);padding:1px 5px;border-radius:5px}
+  .callout{background:var(--warn-soft);border:1px solid var(--border);border-left:4px solid var(--warn);
+    border-radius:9px;padding:14px 16px;display:grid;gap:8px}
+  .callout h3{margin:0;font-size:14px;color:var(--warn);display:flex;align-items:center;gap:7px}
+  .callout p,.callout li{font-size:13.5px;color:var(--ink-2);line-height:1.6;margin:0}
+  .callout ul{margin:0;padding-left:20px;display:grid;gap:4px}
+  .callout .tip{font-size:12.5px;color:var(--ink-3);border-top:1px dashed var(--border);padding-top:8px;margin-top:2px}
+  .callout.info{background:var(--accent-soft);border-left-color:var(--accent)}
+  .callout.info h3{color:var(--accent-ink)}
   .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:0;padding:0;list-style:none}
   .rules li{background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:11px 13px;font-size:13.5px}
   .rules b{font-family:var(--mono);color:var(--accent-ink);font-size:12.5px}
@@ -92,6 +100,8 @@
   .stat b{font-size:19px;color:var(--ink);font-variant-numeric:tabular-nums;font-weight:800}
   .stat.warn{background:var(--warn-soft);border-color:transparent;color:var(--warn)}
   .stat.warn b{color:var(--warn)}
+  .stat.info{background:var(--accent-soft);border-color:transparent;color:var(--accent-ink)}
+  .stat.info b{color:var(--accent-ink)}
   /* question list */
   .qlist{display:grid;gap:10px}
   .q{border:1px solid var(--border);border-radius:10px;padding:13px 15px;background:var(--surface)}
@@ -139,15 +149,15 @@
     <div class="step"><span class="num">1</span><h2>Format your questions</h2>
       <span class="hint">one-time, 2-minute convention</span></div>
     <details class="guide" id="guide">
-      <summary><span class="chev">▶</span> Show the formatting rules &amp; a copy-paste example</summary>
+      <summary><span class="chev">▶</span> Show the 3 formatting rules &amp; an example</summary>
       <div class="guide-body">
-        <p style="margin:0;color:var(--ink-2);font-size:14px">Type questions normally in Word.
-          Just follow four small rules so the converter can read them:</p>
+        <p style="margin:0;color:var(--ink-2);font-size:14px">Word, Google Docs, Apple Pages, or even a
+          plain text editor — any of these work. Just follow these 3 rules, and upload the final file as
+          a <b>.docx</b> (see below if you're not using Word).</p>
         <ul class="rules">
           <li><b>1. 2. 3.</b> — start each question with a number and a period.</li>
-          <li><b>a) b) c)</b> — start each answer choice with a letter.</li>
-          <li><b>*</b> — put an asterisk before the <em>correct</em> choice(s).</li>
-          <li><b>Type: Essay</b> — optional tag to force a type; also <b>Points:</b> / <b>Title:</b></li>
+          <li><b>a) b) c)</b> — start each answer with a letter.</li>
+          <li><b>*</b> — put a star right before the correct answer.</li>
         </ul>
         <pre>1. What is the powerhouse of the cell?
 a) Nucleus
@@ -158,24 +168,46 @@ c) Ribosome
 a) True
 <span class="c">*b) False</span>
 
-3. Which are noble gases? (select all)
-<span class="c">*a) Helium</span>
-b) Oxygen
-<span class="c">*c) Neon</span>
-
-4. The chemical symbol for water is ____.
-<span class="c">*H2O</span>
-<span class="c">*water</span>
-
-5. Explain photosynthesis in your own words.
-<span class="c">Type: Essay</span>
-<span class="c">Points: 5</span></pre>
-        <div style="font-size:13.5px;color:var(--ink-2)">
-          <b>How types are detected:</b> one <b>*</b> choice → Multiple Choice · True/False pair → True&nbsp;/&nbsp;False ·
-          two&nbsp;or&nbsp;more <b>*</b> choices → Multiple Answers · <b>*</b>answers with no letters → Fill-in-the-Blank ·
-          no choices/answers → Essay. <b>Images</b> pasted into Word are carried into the question automatically.
+3. Explain photosynthesis in your own words.
+<span class="c">Type: Essay</span></pre>
+        <div class="callout info">
+          <h3>🔑 Prefer a separate answer key?</h3>
+          <p>Skip the stars — list your answers after a line that says <b>Answer Key</b>, in the same
+            order as your questions: <code>1. b</code>, <code>2. b</code>, <code>3. a, c, d</code>.
+            Works for multiple choice, true/false, and select-all. You can mix both styles in one file —
+            anything you already starred is left alone.</p>
         </div>
-
+        <div class="callout">
+          <h3>💡 One tip that prevents most problems</h3>
+          <p>Word, Docs, and Pages can all turn a typed <code>1.</code> or <code>a)</code> into an automatic
+            list as you type — don't use their bullet/numbering buttons, just type the marker yourself.
+            If it auto-converts (or you're copying questions in from somewhere else), copy the text and
+            paste it back in as <b>plain text</b> — right-click where you're pasting and look for
+            <b>"Paste as Plain Text"</b> or <b>"Keep Text Only."</b> Then just retype the <code>1.</code>
+            or <code>a)</code> in front, since the automatic number isn't really part of the text.</p>
+          <p class="tip">Don't worry if you miss one — the tool also tries to fix this automatically and
+            will tell you if it had to.</p>
+        </div>
+        <div class="callout info">
+          <h3>🖼 Adding images? Do this for best results</h3>
+          <p>Use your program's regular <b>Insert → Image/Picture</b> — not a pasted screenshot inside a
+            text box, and not a drawing/shape. Set it to <b>"in line with text"</b> wrapping, and put it on
+            its own line right under the question it belongs to, so the tool knows which question it's for.</p>
+          <p class="tip">Use PNG or JPG files, and keep each image reasonably small (well under 5MB) for the
+            fastest conversion.</p>
+        </div>
+        <div class="callout info">
+          <h3>📄 Not using Word? Save as .docx first</h3>
+          <p><b>Google Docs:</b> File → Download → <b>Microsoft Word (.docx)</b>, then upload that file.</p>
+          <p><b>Apple Pages:</b> File → Export To → <b>Word…</b>, then upload that file.</p>
+          <p><b>Plain text editor</b> (Notepad, TextEdit, etc.): there's no autocorrect to fight, so it's the
+            safest place to type — but this tool only reads .docx files. When you're done, paste your text
+            into Word or Google Docs and save/export it as a .docx before uploading.</p>
+        </div>
+        <button class="linkbtn" id="dlSample">↓ Download a sample questions.docx to try</button>
+        <details class="guide" style="margin-top:4px">
+          <summary style="font-size:13.5px"><span class="chev">▶</span> Need more question types? (matching, fill-in-the-blank, dropdowns, file upload)</summary>
+          <div class="guide-body" style="margin-top:12px">
         <p style="margin:6px 0 0;font-weight:600;font-size:14px">More question types — add a <b>Type:</b> tag</p>
         <pre>7. Match each scientist to their contribution.
 <span class="c">Type: Matching</span>
@@ -208,7 +240,8 @@ y: red, *green, blue
           then one <code>name: …</code> line each — commas separate answers (Blanks) or choices with <b>*</b> for
           the correct one (Dropdown).
         </div>
-        <button class="linkbtn" id="dlSample">↓ Download a sample questions.docx to try (all types)</button>
+          </div>
+        </details>
       </div>
     </details>
   </section>
@@ -307,6 +340,46 @@ function showManual(url,name){
   x.onclick=()=>bar.remove();bar.appendChild(x);}
 
 /* ---------- 1. read docx ---------- */
+// Word's AutoFormat As You Type often converts a typed "1." or "a)" at the start of a
+// line into a REAL numbered/bulleted list — the literal marker is then stripped out of
+// the paragraph's text and replaced with list-numbering metadata (word/numbering.xml +
+// each paragraph's <w:numPr>), which the line-based parser below can't see at all.
+// This reconstructs a generic marker ("1. " / "a) ") for such paragraphs so those
+// questions/choices still parse. The exact number/letter value is never used downstream
+// (the parser only checks that *a* marker exists), so we don't need to replicate Word's
+// numbering math — just classify each list as number-like vs letter/bullet-like.
+const NUMBER_FMTS=new Set(["decimal","decimalzero","decimalenclosedcircle","decimalenclosedfullstop",
+  "decimalenclosedparen","decimalfullwidth","decimalfullwidth2","decimalhalfwidth",
+  "cardinaltext","ordinal","ordinaltext"]);
+function parseNumbering(xmlText){
+  if(!xmlText) return null;
+  const doc=new DOMParser().parseFromString(xmlText,"application/xml");
+  const abstractLevels={}; // abstractNumId -> {ilvl: numFmt}
+  for(const an of doc.getElementsByTagNameNS(WNS,"abstractNum")){
+    const aid=an.getAttributeNS(WNS,"abstractNumId");
+    const levels={};
+    for(const lvl of an.getElementsByTagNameNS(WNS,"lvl")){
+      const ilvl=parseInt(lvl.getAttributeNS(WNS,"ilvl")||"0",10);
+      const fmtEl=lvl.getElementsByTagNameNS(WNS,"numFmt")[0];
+      levels[ilvl]=((fmtEl?fmtEl.getAttributeNS(WNS,"val"):null)||"decimal").toLowerCase();
+    }
+    abstractLevels[aid]=levels;
+  }
+  const numToAbstract={};
+  for(const n of doc.getElementsByTagNameNS(WNS,"num")){
+    const nid=n.getAttributeNS(WNS,"numId");
+    const aref=n.getElementsByTagNameNS(WNS,"abstractNumId")[0];
+    if(aref) numToAbstract[nid]=aref.getAttributeNS(WNS,"val");
+  }
+  return function(numId,ilvl){
+    const levels=abstractLevels[numToAbstract[numId]];
+    if(!levels) return "letter"; // unknown list: default to the safer (choice) bucket
+    let fmt=levels[ilvl];
+    if(fmt===undefined){const vals=Object.values(levels);fmt=vals.length?vals[0]:"decimal";}
+    return NUMBER_FMTS.has(fmt)?"number":"letter";
+  };
+}
+
 function readDocx(buf){
   const files=fflate.unzipSync(new Uint8Array(buf));
   const dec=new TextDecoder();
@@ -327,9 +400,10 @@ function readDocx(buf){
       }
     }
   }
+  const numberingLookup=files["word/numbering.xml"]?parseNumbering(dec.decode(files["word/numbering.xml"])):null;
   // paragraphs
   const doc=new DOMParser().parseFromString(docXml,"application/xml");
-  const lines=[];
+  const lines=[]; let recovered=0;
   for(const p of doc.getElementsByTagNameNS(WNS,"p")){
     let text="";
     for(const t of p.getElementsByTagNameNS(WNS,"t")) text+=t.textContent||"";
@@ -337,9 +411,19 @@ function readDocx(buf){
     for(const blip of p.getElementsByTagNameNS(ANS,"blip")){
       const rid=blip.getAttributeNS(RNS,"embed"); if(rid) imgs.push(rid);
     }
+    const numPr=p.getElementsByTagNameNS(WNS,"numPr")[0];
+    if(numPr && numberingLookup){
+      const numIdEl=numPr.getElementsByTagNameNS(WNS,"numId")[0];
+      const ilvlEl=numPr.getElementsByTagNameNS(WNS,"ilvl")[0];
+      const numId=numIdEl?numIdEl.getAttributeNS(WNS,"val"):null;
+      const ilvl=ilvlEl?parseInt(ilvlEl.getAttributeNS(WNS,"val")||"0",10):0;
+      const kind=numId!=null?numberingLookup(numId,ilvl):"letter";
+      text=(kind==="number"?"1. ":"a) ")+text.trim();
+      recovered++;
+    }
     lines.push({text:text.trim(),imgs});
   }
-  return {lines,images};
+  return {lines,images,recovered};
 }
 
 /* ---------- 2. parse questions ---------- */
@@ -362,6 +446,66 @@ const ALIAS={mc:"multiple_choice","multiple choice":"multiple_choice",
   blanks:"fill_in_multiple_blanks",fimb:"fill_in_multiple_blanks","fill in multiple blanks":"fill_in_multiple_blanks",
   dropdown:"multiple_dropdowns",dropdowns:"multiple_dropdowns","multiple dropdowns":"multiple_dropdowns",
   file:"file_upload",upload:"file_upload","file upload":"file_upload"};
+
+// Answer Key section: a trailing "Answer Key" / "Answers" line, with answers matched
+// to questions BY ORDER among unstarred, keyable (MC/TF/MA) questions only — not by
+// the literal digit typed anywhere, consistent with the rest of this tool (typed
+// numbers are never relied on for correctness). A question that already has an
+// inline '*' is skipped by the key entirely (asterisk wins, doesn't consume an entry).
+const KEY_HEADER=/^\s*(answer\s*key|answers)\s*:?\s*$/i;
+const KEY_LINE=/^\s*(\d+)[.)]\s*(.+)$/;
+function splitKeySection(lines){
+  for(let i=0;i<lines.length;i++){
+    if(KEY_HEADER.test(lines[i].text)) return {questionLines:lines.slice(0,i),keyLines:lines.slice(i+1)};
+  }
+  return {questionLines:lines,keyLines:[]};
+}
+function parseKeyEntries(keyLines){
+  const entries=[];
+  for(const ln of keyLines){
+    const m=KEY_LINE.exec(ln.text);
+    if(!m)continue;
+    const tokens=[];
+    for(let tok of m[2].split(",")){
+      tok=tok.trim(); if(!tok)continue;
+      tokens.push(/^[A-Za-z]$/.test(tok)?["letter",tok.toLowerCase()]:["text",tok]);
+    }
+    if(tokens.length)entries.push(tokens);
+  }
+  return entries;
+}
+function applyAnswerKey(questions,entries){
+  let applied=0,keyIdx=0;
+  for(const q of questions){
+    if(!(q.type==="multiple_choice"||q.type==="true_false"||q.type==="multiple_answers"))continue;
+    if(!q.choices.length||q.choices.some(c=>c.correct))continue; // asterisk wins; nothing to key
+    if(keyIdx>=entries.length)continue;
+    const tokens=entries[keyIdx]; keyIdx++;
+    let matchedAny=false;
+    for(const [kind,val] of tokens){
+      if(kind==="letter"){
+        const idx=val.charCodeAt(0)-97;
+        if(idx>=0&&idx<q.choices.length){q.choices[idx].correct=true;matchedAny=true;}
+        else q.warnings.push("Answer key letter '"+val+"' is out of range (this question has "+q.choices.length+" choices).");
+      }else{
+        const hit=q.choices.find(c=>c.text.trim().toLowerCase()===val.trim().toLowerCase());
+        if(hit){hit.correct=true;matchedAny=true;}
+        else q.warnings.push("Answer key entry '"+val+"' didn't match any choice text.");
+      }
+    }
+    if(matchedAny){
+      applied++;
+      q.warnings=q.warnings.filter(w=>!w.includes("No correct answer marked"));
+      if(!q.explicitType){
+        const nCorrect=q.choices.filter(c=>c.correct).length;
+        const tfPair=q.choices.length===2 &&
+          JSON.stringify(q.choices.map(c=>c.text.toLowerCase()).sort())===JSON.stringify(["false","true"]);
+        q.type=tfPair?"true_false":(nCorrect>1?"multiple_answers":"multiple_choice");
+      }
+    }
+  }
+  return {applied,leftover:entries.length-keyIdx};
+}
 
 function parseQuestions(lines){
   const blocks=[]; let cur=null;
@@ -408,7 +552,7 @@ function classify(b){
 
   const q={type,stem:b.stem,title:b.tags.title||null,points,
     images:b.stem_imgs.concat(extraImgs),choices,answers:stars,
-    pairs:[],distractors:[],numeric:[],blanks:[],warnings};
+    pairs:[],distractors:[],numeric:[],blanks:[],warnings,explicitType:!!explicit};
 
   if(type==="multiple_choice"||type==="true_false"||type==="multiple_answers"){
     if((type==="multiple_choice"||type==="true_false")&&nCorrect===0)
@@ -631,7 +775,7 @@ function buildQti(questions,images,quizTitle){
 }
 
 /* ---------- UI wiring ---------- */
-let parsed=null, parsedImages=null, srcName="";
+let parsed=null, parsedImages=null, srcName="", recoveredCount=0, appliedFromKey=0, keyLeftover=0;
 const TYPE_LABEL={multiple_choice:"Multiple Choice",true_false:"True / False",
   multiple_answers:"Multiple Answers",short_answer:"Fill in the Blank",essay:"Essay",
   matching:"Matching",numerical:"Numerical",fill_in_multiple_blanks:"Multiple Blanks",
@@ -656,6 +800,9 @@ function renderReview(){
   for(const q of parsed){counts[q.type]=(counts[q.type]||0)+1; warns+=q.warnings.length;}
   let sum='<div class="stat"><b>'+parsed.length+'</b> question'+(parsed.length!==1?"s":"")+'</div>';
   for(const t in counts) sum+='<div class="stat"><b>'+counts[t]+'</b>'+TYPE_LABEL[t]+'</div>';
+  if(recoveredCount) sum+='<div class="stat info"><b>'+recoveredCount+'</b> recovered from Word auto-numbering</div>';
+  if(appliedFromKey) sum+='<div class="stat info"><b>'+appliedFromKey+'</b> answered from Answer Key</div>';
+  if(keyLeftover) sum+='<div class="stat warn"><b>'+keyLeftover+'</b> unused Answer Key line'+(keyLeftover!==1?"s":"")+'</div>';
   if(warns) sum+='<div class="stat warn"><b>'+warns+'</b> to review</div>';
   $("#summary").innerHTML=sum;
   // list
@@ -681,8 +828,11 @@ async function handleFile(file){
   srcName=file.name;
   try{
     const buf=await file.arrayBuffer();
-    const {lines,images}=readDocx(buf);
-    parsed=parseQuestions(lines); parsedImages=images; _id=1000;
+    const {lines,images,recovered}=readDocx(buf);
+    const {questionLines,keyLines}=splitKeySection(lines);
+    parsed=parseQuestions(questionLines); parsedImages=images; recoveredCount=recovered; _id=1000;
+    const keyResult=applyAnswerKey(parsed,parseKeyEntries(keyLines));
+    appliedFromKey=keyResult.applied; keyLeftover=keyResult.leftover;
     renderReview();
     $("#reviewCard").scrollIntoView({behavior:"smooth",block:"start"});
     toast("Found "+parsed.length+" question"+(parsed.length!==1?"s":""));
